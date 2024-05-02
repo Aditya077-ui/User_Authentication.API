@@ -1,1 +1,1 @@
-# User_Authentication.API
+Enhanced User Authentication and Role Based Authorization(Admin,User) using ASP.NET Core WebAPI for Various Endpoints (CRUD) using JWT token Authentication and tried to consume that WebAPI into new MVC project using HTTPCLIENT method.It has the features of Register and Login in UI,when user login the JWT token is stored in cookies for further authorization.
