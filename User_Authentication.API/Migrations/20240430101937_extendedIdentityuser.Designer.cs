@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using User_Authentication.API.Data;
 
@@ -11,9 +12,11 @@ using User_Authentication.API.Data;
 namespace User_Authentication.API.Migrations
 {
     [DbContext(typeof(AuthDbContext))]
-    partial class AuthDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240430101937_extendedIdentityuser")]
+    partial class extendedIdentityuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,15 +54,15 @@ namespace User_Authentication.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a32a4c45-5184-4ca3-8518-96e1ba46cabb",
-                            ConcurrencyStamp = "a32a4c45-5184-4ca3-8518-96e1ba46cabb",
+                            Id = "b64ed0f6-b469-46ad-97ac-c18d5129d115",
+                            ConcurrencyStamp = "b64ed0f6-b469-46ad-97ac-c18d5129d115",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "242cc943-a59e-444b-9de2-34b67053c645",
-                            ConcurrencyStamp = "242cc943-a59e-444b-9de2-34b67053c645",
+                            Id = "a82891a8-015b-4e44-b6cb-a51935b8fce0",
+                            ConcurrencyStamp = "a82891a8-015b-4e44-b6cb-a51935b8fce0",
                             Name = "User",
                             NormalizedName = "USER"
                         });

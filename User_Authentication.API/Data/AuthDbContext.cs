@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using User_Authentication.API.Model;
 
 namespace User_Authentication.API.Data
 {
@@ -11,34 +12,38 @@ namespace User_Authentication.API.Data
             
         }
 
+        public DbSet<ApplicationUser> applicationUsers { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            var AdminRoleId = "b64ed0f6-b469-46ad-97ac-c18d5129d115";
-            var NormalUserRoleId = "a82891a8-015b-4e44-b6cb-a51935b8fce0";
+            var AdminRoleId = "a32a4c45-5184-4ca3-8518-96e1ba46cabb";
+            var UserRoleId = "242cc943-a59e-444b-9de2-34b67053c645";
 
             var roles = new List<IdentityRole>()
-     {
-         new IdentityRole()
-         {
-             Id = AdminRoleId,
-             ConcurrencyStamp = AdminRoleId,
-             Name = "Admin",
-             NormalizedName = "Admin".ToUpper(),
-         },
-         new IdentityRole()
-         {
-             Id = NormalUserRoleId,
-             ConcurrencyStamp= NormalUserRoleId,
-             Name = "User",
-             NormalizedName = "User".ToUpper()
-         }
-     };
+            {
+                new IdentityRole()
+                {
+                     Id = AdminRoleId,
+                     ConcurrencyStamp = AdminRoleId,
+                     Name = "Admin",
+                     NormalizedName = "Admin".ToUpper(),
+
+                },
+                new IdentityRole()
+                {
+                    Id = UserRoleId,
+                    ConcurrencyStamp= UserRoleId,
+                    Name = "User",
+                    NormalizedName = "User".ToUpper()
+                }
+            };
 
             builder.Entity<IdentityRole>().HasData(roles);
 
-        }
 
+        }
     }
 }

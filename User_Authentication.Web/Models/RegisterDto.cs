@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace User_Authentication.API.DTO
+namespace User_Authentication.Web.Models
 {
-    public class RegisterRequestDTO
+    public class RegisterDto
     {
+        public string Id { get; set; }
         [Required]
         [DataType(DataType.EmailAddress)]
-        [MaxLength(25,ErrorMessage="UserName should be maximum of 25 length")]
+        [MaxLength(25, ErrorMessage = "UserName should be maximum of 25 length")]
         public string UserName { get; set; }
 
         [Required]
@@ -16,12 +17,12 @@ namespace User_Authentication.API.DTO
         [Required]
         public string Name { get; set; }
 
-      
-        public string? DepartmentName { get; set; }
 
-        public string? City { get; set; }
+        public string DepartmentName { get; set; }
 
-        public string? State { get; set; }
+        public string City { get; set; }
+
+        public string State { get; set; }
 
         [Required]
         public string[] Roles { get; set; }

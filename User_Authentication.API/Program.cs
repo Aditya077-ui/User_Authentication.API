@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using User_Authentication.API.Data;
+using User_Authentication.API.Model;
 using User_Authentication.API.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -48,13 +49,14 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+
 builder.Services.AddDbContext<AuthDbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();    
 
-builder.Services.AddIdentityCore<IdentityUser>()
+builder.Services.AddIdentityCore<ApplicationUser>()
     .AddRoles<IdentityRole>()
-    .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>("AuthDb")
+    .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("AuthDb")
     .AddEntityFrameworkStores<AuthDbContext>()
     .AddDefaultTokenProviders();
 

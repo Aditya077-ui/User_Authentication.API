@@ -17,17 +17,16 @@ namespace User_Authentication.API.Repository
 
         public string CreateJWTToken(IdentityUser user, List<string> roles)
         {
-            //create claims
             var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.Email, user.Email));
 
             foreach (var role in roles)
             {
-                claims.Add(new Claim(ClaimTypes.Role, role));
+                // Use custom claim type "Roles" for roles
+                claims.Add(new Claim("Roles", role));
             }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["jwt:Key"]));
-
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
@@ -39,7 +38,8 @@ namespace User_Authentication.API.Repository
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
     }
 }
-    
+
 
