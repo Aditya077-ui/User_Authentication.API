@@ -101,7 +101,7 @@ namespace User_Authentication.API.Controllers
 
 
 
-        //[Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "Admin,User")]
         [HttpGet]
         [Route("users")]
         public IActionResult GetUsers()
@@ -116,7 +116,7 @@ namespace User_Authentication.API.Controllers
 
 
         // GET: /api/auth/Users/{id}
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,User")]
         [HttpGet]
         [Route("users/{id}")]
         public async Task<IActionResult> GetUser(Guid id)
